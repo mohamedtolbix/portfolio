@@ -50,6 +50,7 @@ export default function Portfolio() {
           if (entry.isIntersecting) {
             setIsVisible((prev) => ({ ...prev, [entry.target.id]: true }));
             setActiveSection(entry.target.id);
+            console.log("visible:", isVisible, animFrameRef);
           }
         });
       },
@@ -57,7 +58,7 @@ export default function Portfolio() {
     );
     document.querySelectorAll("section[id]").forEach((s) => observer.observe(s));
     return () => observer.disconnect();
-  }, []);
+  });
 
   const scrollTo = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
